@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Websocket Test</title>
+</head>
+<body>
+    <h1>Websocket Test</h1>
+</body>
+
+<script>
+    let ws;
+
+    const proto = window.location.protocol === 'https:' ? 'wss' : 'ws';
+    ws = new WebSocket(`${proto}://${window.location.host}/ws`);
+
+    ws.onmessage = function (event) {
+        console.log('Message from server', event.data);
+    };
+
+    ws.onopen = function () {
+        console.log('Connected to server');
+    };
+
+    ws.onclose = function () {
+        console.log('Disconnected from server');
+    };
+</script>
+</html>
